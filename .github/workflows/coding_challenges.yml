@@ -1,4 +1,4 @@
-name: Sync Leetcode
+name: Coding Challenges
 
 on:
   workflow_dispatch:
