@@ -3,25 +3,14 @@
  * @param {number} k
  * @return {number}
  */
-var findMaxAverage = function(nums, k) {
-    if (nums.length === 1) return nums[0];
-    if (nums.length === k) return nums.reduce((a,c) => a + c) / k;
-    
-    let i = 0;
-
+var findMaxAverage = function(nums, k) {    
     let total = nums.slice(0,k).reduce((a,c) => a + c);
-    console.log('total',total);
-
     let runningTotal = total;
 
-    while (k + i <= nums.length) {
-        runningTotal = runningTotal - nums[i] + nums[k + i];
-        console.log('runningTotal',runningTotal)
+    for (let i = 1; i <= nums.length - k; i++) {
+        runningTotal = runningTotal - nums[i - 1] + nums[(k - 1) + i];
 
-        if (runningTotal > total) {
-            total = runningTotal;
-        }
-        i++;
+        if (runningTotal > total) total = runningTotal;
     }
-    return total / k;
+    return total / k
 };
